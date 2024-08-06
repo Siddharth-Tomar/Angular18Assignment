@@ -1,0 +1,30 @@
+<div class="d-flex justify-content-center align-items-center min-vh-100">
+  <div class="container">
+    <h2 class="text-center mb-4">Random Jokes</h2>
+    
+    <div class="text-center mb-4">
+      <button class="btn btn-primary" (click)="fetchJokes()">Refresh Jokes</button>
+    </div>
+
+    <div *ngIf="loading" class="text-center">
+      <div class="spinner-border" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
+
+    <div *ngIf="error" class="alert alert-danger text-center">
+      {{ error }}
+    </div>
+
+    <div class="row justify-content-center">
+      <div *ngFor="let joke of jokes" class="col-md-8 col-lg-6 mb-3 d-flex align-items-stretch">
+        <div class="card shadow-sm h-100">
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title">{{ joke.setup }}</h5>
+            <p class="card-text flex-grow-1"><strong>{{ joke.punchline }}</strong></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
