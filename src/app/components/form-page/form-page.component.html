@@ -1,6 +1,12 @@
-<div class="d-flex justify-content-center align-items-center min-vh-100">
-  <div class="p-4" style="width: 100%; max-width: 500px;">
+<div class="d-flex justify-content-center align-items-center min-vh-100 bg-light">
+  <div class="card p-4 shadow" style="width: 100%; max-width: 500px;">
     <h2 class="text-center mb-4">Contact Us</h2>
+
+    <!-- Success Alert -->
+    <div *ngIf="submissionSuccess" class="alert alert-success" role="alert">
+      Thank you! Your message has been successfully submitted.
+    </div>
+
     <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
       <div class="mb-3">
         <label for="name" class="form-label">Name</label>

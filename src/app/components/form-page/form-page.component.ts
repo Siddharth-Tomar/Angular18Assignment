@@ -3,14 +3,15 @@ import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angula
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-form-page',
   standalone: true,
-  imports: [ReactiveFormsModule,CommonModule],
+  selector: 'app-form-page',
   templateUrl: './form-page.component.html',
-  styleUrl: './form-page.component.scss'
+  styleUrls: ['./form-page.component.scss'],
+  imports: [CommonModule, ReactiveFormsModule]
 })
 export class FormPageComponent {
   contactForm: FormGroup;
+  submissionSuccess: boolean = false;
 
   constructor(private fb: FormBuilder) {
     this.contactForm = this.fb.group({
@@ -26,12 +27,16 @@ export class FormPageComponent {
 
   onSubmit() {
     if (this.contactForm.valid) {
+      // Perform any additional actions on form submission here
       console.log('Form Submitted!', this.contactForm.value);
-      // You can handle the form submission here
+
+      // Set the success flag to true to display the alert
+      this.submissionSuccess = true;
+
+      // Optionally reset the form after submission
+      this.contactForm.reset();
     } else {
       console.log('Form is invalid!');
     }
-
-    this.contactForm.reset();
   }
 }
